@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import App from './App.jsx'
-import Movie from './Movie.jsx'
-import NavBar from './NavBar.jsx'
+import Movie from './components/Movie.jsx'
+import NavBar from './components/NavBar.jsx'
 
 const Router = () => {
     return (

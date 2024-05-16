@@ -8,10 +8,14 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { BrowserRouter } from 'react-router-dom'
 import Router from './Router.jsx'
+import { MovieProvider } from './context/MovieContext.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
+  <MovieProvider>
+
       <Router />
+  </MovieProvider>
   </BrowserRouter>,
 )
