@@ -6,7 +6,8 @@ export const MovieContext = createContext()
 export const MovieProvider = (props) => {
 
     const [movies, setMovies] = useState()
-    // const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     const API_URL = `https://api.themoviedb.org/3/movie/top_rated`
     const options = {
@@ -20,17 +21,16 @@ export const MovieProvider = (props) => {
     const fetchMovies = async () => {
     
         try{
-        const response = await axios.get(API_URL, options)
-        setMovies(response.data.results)
-        console.log(response.data.results)
-        
+            const response = await axios.get(API_URL, options)
+            setMovies(response.data.results)
+            console.log(response.data.results)
         }
         catch (err) {
-        console.log(err);
-        // setError(err);
+            console.log(err);
+            setError(err);
         }
         finally{
-        // setLoading(false);
+            setLoading(false);
         }
     }
 
@@ -40,7 +40,9 @@ export const MovieProvider = (props) => {
 
     return (
         <MovieContext.Provider value={[movies, setMovies]}>
-            {props.children}
+        {/* <MovieContext.Provider value={[movies, setMovies, loading, setLoading, error, setError]}> */}
+            {!loading && props.children}
+            {/* {props.children} */}
         </MovieContext.Provider>
     )
 }

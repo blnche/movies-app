@@ -45,8 +45,7 @@ const MovieCard = ({
   };
 
   return (
-    <Link to={`/movies/${id}`}>
-      <Card key={id} sx={{ maxWidth: 345, marginBottom: "15px", backgroundColor:'#eee' }}>
+    <Card key={id} sx={{ maxWidth: 345, marginBottom: "15px", backgroundColor:'#eee' }}>
 
         <CardHeader
           title={title}
@@ -66,13 +65,13 @@ const MovieCard = ({
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
+          
+            <Link to={`/movies/${id}/update`}>Update</Link>
+          
 
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
+          
+          <Link to={`/movies/${id}`}>Details
+            </Link>
 
           <ExpandMore
             expand={expanded}
@@ -90,7 +89,6 @@ const MovieCard = ({
           </CardContent>
         </Collapse>
       </Card>
-    </Link>
   );
 };
 

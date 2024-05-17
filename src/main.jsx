@@ -9,13 +9,16 @@ import '@fontsource/roboto/700.css';
 import { BrowserRouter } from 'react-router-dom'
 import Router from './Router.jsx'
 import { MovieProvider } from './context/MovieContext.jsx';
+import { APIMovieProvider } from './context/APIMovieContext.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <MovieProvider>
+    <MovieProvider>
+      <APIMovieProvider>
 
-      <Router />
-  </MovieProvider>
+        <Router />
+      </APIMovieProvider>
+    </MovieProvider>
   </BrowserRouter>,
 )

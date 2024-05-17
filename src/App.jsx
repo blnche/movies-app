@@ -9,7 +9,8 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem'
-import { MovieContext } from './context/MovieContext'
+import { APIMovieContext } from './context/APIMovieContext.jsx'
+import AddMovie from './components/AddMovie.jsx'
 
 
 
@@ -28,8 +29,8 @@ function App() {
   
 
   // const [error, setError] = useState(null)
-  // const [loading, setLoading] = useContext(MovieContext)
-  const [movies, setMovies] = useContext(MovieContext)
+  // const [loading, setLoading] = useState(true)
+  const [movies, setMovies] = useContext(APIMovieContext)
   console.log(movies)
   // const [search, setSearch] = useState(null)
   // const [moviesFound, setMoviesFound] = useState(null)
@@ -37,12 +38,15 @@ function App() {
   // const [selectedGenre, setSelectedGenre] = useState('all')
   // const [filteredMovies, setFilteredMovies] = useState(null)
 
+  // const [movies, setMovies, loading, setLoading, error, setError] = useContext(MovieContext)
+  // console.log(movies)
+
   // const fetchMovies = async () => {
   
   //   try{
-  //     const response = await axios.get(API_URL, options)
-  //     setMovies(response.data.results)
-  //     // console.log(response.data.results)
+  //     const response = await axios.get('http://localhost:3000/api/movies')
+  //     setMovies(response.data)
+  //     console.log(response.data)
   //     if(search) {
   //       console.log(movies)
   //       const moviesFound = movies.filter(movie => movie.title.toLowerCase().includes(search))
@@ -54,11 +58,11 @@ function App() {
   //       // setFilteredMovies(filteredMovies)
   //       console.log(filteredMovies)
   //     }
-  //   }
-  //   catch (err) {
-  //     console.log(err);
-  //     setError(err);
-  //   }
+    // }
+    // catch (err) {
+    //   console.log(err);
+    //   setError(err);
+    // }
   //   finally{
   //     setLoading(false);
   //   }
@@ -75,8 +79,8 @@ function App() {
   // }
 
   // useEffect(() => {
-  //   // fetchMovies()
-  //   // fetchMoviesgenre()
+  //   fetchMovies()
+  // //   // fetchMoviesgenre()
   // }, [])
 
   // if(error) return <p>{error}</p>
@@ -99,7 +103,7 @@ function App() {
 
   return (
     <>
-      <h1><a href="http://localhost:5173/" style={{color:'inherit'}}>Movies</a></h1>
+      <h1>Movies from my API</h1>
       {/* <form onSubmit={handleSubmit} style={{display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'15px'}}>
         <TextField id="outlined-basic" label="Search" variant="filled" onChange={e => setSearch(e.target.value.toLowerCase())} />
         <IconButton aria-label="delete" type='submit'>
@@ -120,6 +124,7 @@ function App() {
             })}
             <MenuItem value="all">All</MenuItem>
         </Select> */}
+        <AddMovie/>
       <Grid container spacing={5} justifyContent={'center'}>
         {/* {filteredMovies && filteredMovies.map(movie => {
           return(
@@ -140,9 +145,9 @@ function App() {
           )
         })} */}
         {/* {(!moviesFound && !filteredMovies) && movies.map(movie => { */}
-        {movies && movies.map(movie => {
+        {movies && movies.map((movie, index) => {
           return(
-          <div key={movie.id}>
+          <div key={index}>
             <Grid >
               <MovieCard {...movie}/>
             </Grid>

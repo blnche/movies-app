@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 const NavBar = () => {
     return (
         <nav>
-            <Link to='/'>Home</Link>
+            <Link style={{marginInline:'20px'}}to='/'>Movies from my API</Link>
+            <Link to='/movies'>Movies</Link>
         </nav>
     )
 }
